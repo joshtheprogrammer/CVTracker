@@ -5,7 +5,7 @@
 import cv2
 import numpy as np
 
-face_cascade = cv2.CascadeClassifier(r"C:\Users\joshu\Desktop\CV Render\haarcascade_frontalface_default.xml")
+face_cascade = cv2.CascadeClassifier(r"C:\Users\joshu\Desktop\projects\CV Render\haarcascade_frontalface_default.xml")
 
 vid_type = input("Type? ")
 
@@ -39,7 +39,7 @@ while True:
             
         __ = []
         #config
-        for col in range(0, 10):
+        for col in range(0, 5):
             _ = []
             for row in range(0+(col*5), 5+(col*5)):
                 try:
