@@ -1,6 +1,7 @@
 #id people?
 #make more accurate
 #games?
+#ml for accurciy
 
 import cv2
 import numpy as np
@@ -19,6 +20,7 @@ out = cv2.VideoWriter(r"C:\Users\joshu\Videos\output.avi",fourcc, 10.0, (480*2,6
 
 while True:
     f_ret, frame = CAP.read()
+    f2_ret, frame2 = CAP.read()
 
     if f_ret == True:
         #frame = cv2.flip(frame, -1z)
@@ -35,7 +37,7 @@ while True:
             
             people[pos] = t_result
 
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.rectangle(frame2, (x, y), (x+w, y+h), (0, 255, 0), 2)
             
         __ = []
         #config
@@ -59,13 +61,15 @@ while True:
         v = np.vstack(h)
         v = cv2.resize(v, (480,600), interpolation=cv2.INTER_AREA)
         
-        frame2 = cv2.resize(frame, (480,600))
+        
+        frame2 = cv2.resize(frame2, (480,600))
         
         cam = np.concatenate((v, frame2), axis=1)
         
         out.write(cam)
 
-        cv2.imshow("People", cam)
+        cv2.imshow("People", frame2)
+        cv2.imshow("People2", v)
 
         if cv2.waitKey(1) & 0xFF == 27:
             break
